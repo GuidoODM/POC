@@ -70,6 +70,92 @@
     <dmn:variable id="_4B6BEBD1-5C01-4E39-AA31-6AD5D7D516E3" name="Posee franquicia?" typeRef="boolean"/>
     <dmn:encapsulatedLogic id="_42593F76-3A61-4AE2-8326-C359E8E4209B" kind="FEEL">
       <dmn:formalParameter id="_17613EBE-D18C-4821-A893-50D5FD77A2AF" name="Codigo de frnquicia" typeRef="string"/>
+      <dmn:decisionTable id="_D6113F39-6538-4CE5-B8F4-E72B9E2BD15D" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+        <dmn:input id="_F3B00781-7583-46C2-94CD-66EF97E82E00">
+          <dmn:inputExpression id="_3AFEDFD2-7ABA-4ACA-88D4-9746EA84F3BA" typeRef="string">
+            <dmn:text>Franquicia</dmn:text>
+          </dmn:inputExpression>
+        </dmn:input>
+        <dmn:output id="_2D8ED37C-E1BB-4708-9F85-91A2A31931D9"/>
+        <dmn:annotation name="annotation-1"/>
+        <dmn:rule id="_DD9E9B57-8F2F-452F-92A2-06AF7980CC22">
+          <dmn:inputEntry id="_5288BBA4-2D0F-4EC8-94DE-1C6FED2A172E">
+            <dmn:text>-0069</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_FB8B68D1-ACD8-4D36-A4B2-6166FD54D32C">
+            <dmn:text>true</dmn:text>
+          </dmn:outputEntry>
+          <dmn:annotationEntry>
+            <dmn:text/>
+          </dmn:annotationEntry>
+        </dmn:rule>
+        <dmn:rule id="_167C1C35-EE26-4F2A-BF09-F6CF608879BE">
+          <dmn:inputEntry id="_2EEABA22-B504-4B91-A7A4-725898756325">
+            <dmn:text>0080</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_6A14C2CF-D9CC-4096-8EA0-0C10628AE286">
+            <dmn:text>true</dmn:text>
+          </dmn:outputEntry>
+          <dmn:annotationEntry>
+            <dmn:text/>
+          </dmn:annotationEntry>
+        </dmn:rule>
+        <dmn:rule id="_78602DC4-BD47-408A-ABEB-3B47E413A56D">
+          <dmn:inputEntry id="_AD016717-971F-46A8-B1F3-4C0DAAA090D3">
+            <dmn:text>0076</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_E1A9BC27-A676-4D56-9799-55B92EEAD702">
+            <dmn:text>true</dmn:text>
+          </dmn:outputEntry>
+          <dmn:annotationEntry>
+            <dmn:text/>
+          </dmn:annotationEntry>
+        </dmn:rule>
+        <dmn:rule id="_24BB4F08-EA73-4957-96CA-EAEDEA9813BC">
+          <dmn:inputEntry id="_491011E6-DB41-4228-B7CF-A33697C9526B">
+            <dmn:text>0045</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_3E32DE5C-4D49-4E9B-9D61-93BD1FF2E6B9">
+            <dmn:text>true</dmn:text>
+          </dmn:outputEntry>
+          <dmn:annotationEntry>
+            <dmn:text/>
+          </dmn:annotationEntry>
+        </dmn:rule>
+        <dmn:rule id="_43D81812-E027-415A-8C96-B9BC304C3D42">
+          <dmn:inputEntry id="_937159C0-6D00-4802-84B1-CE1E26BD1A33">
+            <dmn:text>0032</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_BF33FB02-A2A6-44B3-BC33-00EDB78A9992">
+            <dmn:text>true</dmn:text>
+          </dmn:outputEntry>
+          <dmn:annotationEntry>
+            <dmn:text/>
+          </dmn:annotationEntry>
+        </dmn:rule>
+        <dmn:rule id="_874C2D9A-A234-490F-8803-54621B83CD89">
+          <dmn:inputEntry id="_E1024F89-AD28-4994-BE36-5C733CB90D2A">
+            <dmn:text>0025</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_033C805C-5AC3-4F7A-BAE2-6904954A9CC2">
+            <dmn:text>true</dmn:text>
+          </dmn:outputEntry>
+          <dmn:annotationEntry>
+            <dmn:text/>
+          </dmn:annotationEntry>
+        </dmn:rule>
+        <dmn:rule id="_3C722936-5E79-45D7-A86E-087AE7FA89AB">
+          <dmn:inputEntry id="_3648B5B5-55C3-4CC4-8969-3261FBEE237D">
+            <dmn:text>-otherwise</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_44757603-865E-42AD-AF97-6C196A40BDFD">
+            <dmn:text>false</dmn:text>
+          </dmn:outputEntry>
+          <dmn:annotationEntry>
+            <dmn:text/>
+          </dmn:annotationEntry>
+        </dmn:rule>
+      </dmn:decisionTable>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
   <dmndi:DMNDI>
@@ -90,9 +176,15 @@
             <kie:width>50</kie:width>
             <kie:width>150</kie:width>
           </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_D6113F39-6538-4CE5-B8F4-E72B9E2BD15D">
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_42593F76-3A61-4AE2-8326-C359E8E4209B">
             <kie:width>50</kie:width>
-            <kie:width>150</kie:width>
+            <kie:width>370</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
