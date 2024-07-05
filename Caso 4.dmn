@@ -1,20 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dmn:definitions xmlns:dmn="http://www.omg.org/spec/DMN/20180521/MODEL/" xmlns="https://kiegroup.org/dmn/_B0472797-A62A-4F05-AD6A-9CD47C7C2263" xmlns:feel="http://www.omg.org/spec/DMN/20180521/FEEL/" xmlns:kie="http://www.drools.org/kie/dmn/1.2" xmlns:dmndi="http://www.omg.org/spec/DMN/20180521/DMNDI/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" id="_F6895F60-FBF0-4DA7-BC78-C9A43D54384D" name="Seguros X" typeLanguage="http://www.omg.org/spec/DMN/20180521/FEEL/" namespace="https://kiegroup.org/dmn/_B0472797-A62A-4F05-AD6A-9CD47C7C2263">
   <dmn:extensionElements/>
-  <dmn:itemDefinition id="_2E2F5ED3-E25D-4F6E-88E6-5150AAC252A7" name="Gestión de competencia" isCollection="false">
-    <dmn:itemComponent id="_50A0CBA7-6AF6-458A-ABBA-2AE3A616FB20" name="Año de construccion" isCollection="false">
-      <dmn:typeRef>date</dmn:typeRef>
-    </dmn:itemComponent>
-    <dmn:itemComponent id="_B568F819-08E4-4447-878F-70B1D0CF3B55" name="tiene refacciones hidraulicas" isCollection="false">
+  <dmn:itemDefinition id="_A13D55B7-4A36-4159-A111-32295C93B004" name="garantia" isCollection="false">
+    <dmn:itemComponent id="_21D16568-695E-4306-8F49-F30B0271250E" name="franquicia" isCollection="false">
       <dmn:typeRef>boolean</dmn:typeRef>
     </dmn:itemComponent>
-    <dmn:itemComponent id="_011AB7A6-0611-4659-9566-EC9A0911FF4C" name="franquicia" isCollection="false">
-      <dmn:typeRef>string</dmn:typeRef>
-    </dmn:itemComponent>
-    <dmn:itemComponent id="_AD2D4625-8364-4E79-9F0A-320B14679BCB" name="fecha efecto poliza" isCollection="false">
-      <dmn:typeRef>date</dmn:typeRef>
-    </dmn:itemComponent>
-    <dmn:itemComponent id="_5A7E3AE2-2287-4BC2-844F-9D7B45C888B0" name="garantía de daños" isCollection="false">
+    <dmn:itemComponent id="_8BFD3B73-F200-4271-9D6C-C390CD0724ED" name="codigo" isCollection="false">
       <dmn:typeRef>string</dmn:typeRef>
     </dmn:itemComponent>
   </dmn:itemDefinition>
@@ -27,128 +18,218 @@
       <dmn:typeRef>string</dmn:typeRef>
     </dmn:itemComponent>
   </dmn:itemDefinition>
-  <dmn:inputData id="_59545B85-F2CF-4EE0-BC34-5DE38BB142A3" name="Input Gestión de competencia">
+  <dmn:itemDefinition id="_68D6010B-C7AD-4D32-8BBA-E531057B02F6" name="rol" isCollection="false"/>
+  <dmn:itemDefinition id="_6118FFDB-A5C4-4912-80ED-1960E3A274A3" name="Riesgo" isCollection="false">
+    <dmn:itemComponent id="_304D4D71-F6BA-4373-BF0F-1ABB207E376C" name="añoReformaHidraulica" isCollection="false">
+      <dmn:typeRef>string</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_9961019B-5402-4426-B1C4-B9C7A4CAF41B" name="añoConstruccion" isCollection="false">
+      <dmn:typeRef>date</dmn:typeRef>
+    </dmn:itemComponent>
+    <dmn:itemComponent id="_60E70DE2-474D-4BE5-86EB-CFBF9A254825" name="garantias" isCollection="true">
+      <dmn:typeRef>garantia</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_B294A096-89FC-4BA6-A7B9-7FEABCC2F38C" name="poliza" isCollection="false">
+    <dmn:itemComponent id="_AD2D4625-8364-4E79-9F0A-320B14679BCB" name="fecha efecto poliza" isCollection="false">
+      <dmn:typeRef>date</dmn:typeRef>
+    </dmn:itemComponent>
+  </dmn:itemDefinition>
+  <dmn:itemDefinition id="_4BA00971-7F69-40B9-8615-D49A3F42CF19" name="garantias" isCollection="true">
+    <dmn:typeRef>garantia</dmn:typeRef>
+  </dmn:itemDefinition>
+  <dmn:decisionService id="_1F446D63-8794-4A18-9D36-537536D3F8C8" name="Validacion de competencia">
     <dmn:extensionElements/>
-    <dmn:variable id="_602981B2-99EA-4EC4-A7B4-E630C35554D7" name="Input Gestión de competencia" typeRef="Gestión de competencia"/>
+    <dmn:variable id="_815549D4-7190-413D-8B15-5F983AC8D659" name="Validacion de competencia"/>
+    <dmn:outputDecision href="#_DF7D399C-D6CE-4DD5-962E-E873510F3DEA"/>
+    <dmn:inputData href="#_59545B85-F2CF-4EE0-BC34-5DE38BB142A3"/>
+    <dmn:inputData href="#_E7D13CEE-CA22-48CB-8285-E3ADEE040BDC"/>
+    <dmn:inputData href="#_7DFD85AE-1F64-4C90-910D-17759DD2A53E"/>
+  </dmn:decisionService>
+  <dmn:inputData id="_59545B85-F2CF-4EE0-BC34-5DE38BB142A3" name="Riesgo">
+    <dmn:extensionElements/>
+    <dmn:variable id="_602981B2-99EA-4EC4-A7B4-E630C35554D7" name="Riesgo" typeRef="Riesgo"/>
   </dmn:inputData>
-  <dmn:decision id="_DF7D399C-D6CE-4DD5-962E-E873510F3DEA" name="Decision-1">
+  <dmn:decision id="_DF7D399C-D6CE-4DD5-962E-E873510F3DEA" name="Validaciones">
     <dmn:extensionElements/>
-    <dmn:variable id="_C1ABF335-91B1-4EAA-A3B0-2EAF1BE394BE" name="Decision-1"/>
+    <dmn:variable id="_C1ABF335-91B1-4EAA-A3B0-2EAF1BE394BE" name="Validaciones" typeRef="Validación"/>
     <dmn:informationRequirement id="_04634A90-5624-47DA-9D7B-63A6C7D8699E">
       <dmn:requiredInput href="#_59545B85-F2CF-4EE0-BC34-5DE38BB142A3"/>
     </dmn:informationRequirement>
-    <dmn:knowledgeRequirement id="_CC361D24-E23B-44F0-AD3B-CCF04B002FF5">
-      <dmn:requiredKnowledge href="#_5B509C1E-358D-41F7-B472-5C4F07E6A669"/>
-    </dmn:knowledgeRequirement>
+    <dmn:informationRequirement id="_299C6F41-CE8C-4D51-B195-1627A6B73F53">
+      <dmn:requiredInput href="#_7DFD85AE-1F64-4C90-910D-17759DD2A53E"/>
+    </dmn:informationRequirement>
+    <dmn:informationRequirement id="_5E9B2014-8B22-4654-84C4-98EAF37FB212">
+      <dmn:requiredInput href="#_E7D13CEE-CA22-48CB-8285-E3ADEE040BDC"/>
+    </dmn:informationRequirement>
     <dmn:knowledgeRequirement id="_3C7900E7-DF1D-41BC-A70A-74140FA40560">
       <dmn:requiredKnowledge href="#_3A38A0CE-5A98-49CE-A96D-8F6CF79EDBD1"/>
     </dmn:knowledgeRequirement>
     <dmn:knowledgeRequirement id="_A00DE6DE-55CB-4435-A4C5-A7FC9CB62EB3">
       <dmn:requiredKnowledge href="#_D61547BA-3F68-4CAA-9EC3-5057AB6B8177"/>
     </dmn:knowledgeRequirement>
+    <dmn:context id="_EC53161C-30D3-4DA5-9A98-BCB18AADC40F">
+      <dmn:contextEntry>
+        <dmn:variable id="_0A9296AA-65DF-46C0-BDD0-71F7E329F817" name="Antiguedad" typeRef="number"/>
+        <dmn:literalExpression id="_20D49E47-568D-4836-AB63-58CBE174B3BC">
+          <dmn:text>Calcular Antiguedad(Riesgo)</dmn:text>
+        </dmn:literalExpression>
+      </dmn:contextEntry>
+      <dmn:contextEntry>
+        <dmn:variable id="_C53FBDA8-4F9B-4B63-BEE1-B65915591754" name="Posee Franquisia" typeRef="boolean"/>
+        <dmn:literalExpression id="_9DAB7451-0213-4FEC-92A5-C42FA554F8C2">
+          <dmn:text>Es garantía de daños con franquicia?(Riesgo.garantias)</dmn:text>
+        </dmn:literalExpression>
+      </dmn:contextEntry>
+      <dmn:contextEntry>
+        <dmn:decisionTable id="_C912CC30-D81F-4229-BDB5-A288721C143A" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+          <dmn:input id="_7DB41E25-0A55-4549-BB55-34375E804161">
+            <dmn:inputExpression id="_526C64D3-6830-47FD-AF83-B62B8C7C9F0A" typeRef="number">
+              <dmn:text>Antiguedad</dmn:text>
+            </dmn:inputExpression>
+          </dmn:input>
+          <dmn:input id="_05FE7055-0CE9-4C3E-8EE1-39A71D2FEAFD">
+            <dmn:inputExpression id="_FEB1E1DE-6DB3-4B15-92D9-3E1FF7783FC2" typeRef="boolean">
+              <dmn:text>Posee Franquicia</dmn:text>
+            </dmn:inputExpression>
+          </dmn:input>
+          <dmn:input id="_EC001A33-51F6-499E-B730-DC8686F07A82">
+            <dmn:inputExpression id="_C8FF5289-71DD-49DC-92C0-191AE5009A56" typeRef="number">
+              <dmn:text>Riesgo.añoReformaHidraulica</dmn:text>
+            </dmn:inputExpression>
+          </dmn:input>
+          <dmn:input id="_205D2CC0-43BD-42AB-A9D3-4A7B4A846E4F">
+            <dmn:inputExpression>
+              <dmn:text>input-4</dmn:text>
+            </dmn:inputExpression>
+          </dmn:input>
+          <dmn:output id="_4C953978-84C0-482D-A662-85D2614EBF82" name="Permite continuar" typeRef="string"/>
+          <dmn:output id="_3749C494-FFA9-4F25-B047-878725906B2D" name="Descripcion" typeRef="string"/>
+          <dmn:output id="_1CC24C62-0452-4913-A23C-2878AD52703D" name="Rol de Excepcion" typeRef="string"/>
+          <dmn:annotation name="annotation-1"/>
+          <dmn:rule id="_66F2AF1F-1D65-45AE-8C68-F35FC41890DF">
+            <dmn:inputEntry id="_36BEB266-9239-409C-BF2E-D4C2D1AE05A3">
+              <dmn:text>&gt; 40</dmn:text>
+            </dmn:inputEntry>
+            <dmn:inputEntry id="_030E4A8C-9593-4715-BFE1-E6C20489CA3D">
+              <dmn:text>false</dmn:text>
+            </dmn:inputEntry>
+            <dmn:inputEntry id="_0DDDB8E9-004F-43F1-B901-9A49A5D37291">
+              <dmn:text>= 0</dmn:text>
+            </dmn:inputEntry>
+            <dmn:inputEntry id="_032570AF-D8BF-4B3D-8506-94EDF328F003">
+              <dmn:text>-</dmn:text>
+            </dmn:inputEntry>
+            <dmn:outputEntry id="_6544F16A-F935-4EA0-8F04-0F39596AD477">
+              <dmn:text>No</dmn:text>
+            </dmn:outputEntry>
+            <dmn:outputEntry id="_8DDF245B-14D3-436E-9BD1-2A1E1E413E80">
+              <dmn:text>no permite continuar la contratación si se elimina la franquicia mínima en Daños 
+por agua</dmn:text>
+            </dmn:outputEntry>
+            <dmn:outputEntry id="_382AA053-F1A0-4923-92F1-610320482840">
+              <dmn:text>10</dmn:text>
+            </dmn:outputEntry>
+            <dmn:annotationEntry>
+              <dmn:text/>
+            </dmn:annotationEntry>
+          </dmn:rule>
+        </dmn:decisionTable>
+      </dmn:contextEntry>
+    </dmn:context>
   </dmn:decision>
   <dmn:businessKnowledgeModel id="_3A38A0CE-5A98-49CE-A96D-8F6CF79EDBD1" name="Calcular antiguedad">
     <dmn:extensionElements/>
-    <dmn:variable id="_A388CFE8-D322-494C-A435-4160DF55D337" name="Calcular antiguedad"/>
+    <dmn:variable id="_A388CFE8-D322-494C-A435-4160DF55D337" name="Calcular antiguedad" typeRef="number"/>
     <dmn:encapsulatedLogic id="_EA3BCF08-BB71-4181-91C8-578CCBE86515" kind="FEEL">
+      <dmn:formalParameter id="_2848F60A-4539-429F-A671-57ED2EAEECD1" name="riesgo" typeRef="Riesgo"/>
       <dmn:literalExpression id="_F294A516-793D-4683-818A-71F8DF412A9B">
-        <dmn:text/>
+        <dmn:text>Calcular los años entre:Fecha de construccion del riesgo  -  ls fercha de hoy</dmn:text>
       </dmn:literalExpression>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
-  <dmn:businessKnowledgeModel id="_D61547BA-3F68-4CAA-9EC3-5057AB6B8177" name="Es garantía de daños?">
+  <dmn:businessKnowledgeModel id="_D61547BA-3F68-4CAA-9EC3-5057AB6B8177" name="Es garantía de daños con franquicia?">
     <dmn:extensionElements/>
-    <dmn:variable id="_8A9ED1EE-453A-4AAC-823A-581061EF87FB" name="Es garantía de daños?" typeRef="boolean"/>
+    <dmn:variable id="_8A9ED1EE-453A-4AAC-823A-581061EF87FB" name="Es garantía de daños con franquicia?" typeRef="boolean"/>
     <dmn:encapsulatedLogic id="_AF6D61B4-2C1E-4C59-B5E5-182833E2E346" kind="FEEL">
-      <dmn:literalExpression id="_5F1BE309-7C5B-4993-9EB2-BA60680C8BCF">
-        <dmn:text/>
-      </dmn:literalExpression>
-    </dmn:encapsulatedLogic>
-  </dmn:businessKnowledgeModel>
-  <dmn:businessKnowledgeModel id="_5B509C1E-358D-41F7-B472-5C4F07E6A669" name="Posee franquicia?">
-    <dmn:extensionElements/>
-    <dmn:variable id="_4B6BEBD1-5C01-4E39-AA31-6AD5D7D516E3" name="Posee franquicia?" typeRef="boolean"/>
-    <dmn:encapsulatedLogic id="_42593F76-3A61-4AE2-8326-C359E8E4209B" kind="FEEL">
-      <dmn:formalParameter id="_17613EBE-D18C-4821-A893-50D5FD77A2AF" name="Codigo de frnquicia" typeRef="string"/>
-      <dmn:decisionTable id="_D6113F39-6538-4CE5-B8F4-E72B9E2BD15D" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
-        <dmn:input id="_F3B00781-7583-46C2-94CD-66EF97E82E00">
-          <dmn:inputExpression id="_3AFEDFD2-7ABA-4ACA-88D4-9746EA84F3BA" typeRef="string">
-            <dmn:text>Franquicia</dmn:text>
+      <dmn:formalParameter id="_3ECACF76-CA1A-43A9-9447-CE9FF668D67E" name="ListaGarantias" typeRef="garantias"/>
+      <dmn:decisionTable id="_5F1BE309-7C5B-4993-9EB2-BA60680C8BCF" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
+        <dmn:input id="_F831D901-4DC6-4E98-86B4-9847BC6AD7C1">
+          <dmn:inputExpression typeRef="garantia">
+            <dmn:text>garantia.codigo</dmn:text>
           </dmn:inputExpression>
         </dmn:input>
-        <dmn:output id="_2D8ED37C-E1BB-4708-9F85-91A2A31931D9"/>
+        <dmn:input id="_43F8731C-1CDC-4BF2-9402-6C69770C8951">
+          <dmn:inputExpression id="_5C107D2F-1864-4D25-AEFA-9C8E070D67BE" typeRef="garantia">
+            <dmn:text>garantia.franquicia</dmn:text>
+          </dmn:inputExpression>
+        </dmn:input>
+        <dmn:output id="_10C90A2D-8729-4FF1-86D4-2C55E2774D63"/>
         <dmn:annotation name="annotation-1"/>
-        <dmn:rule id="_DD9E9B57-8F2F-452F-92A2-06AF7980CC22">
-          <dmn:inputEntry id="_5288BBA4-2D0F-4EC8-94DE-1C6FED2A172E">
-            <dmn:text>-0069</dmn:text>
+        <dmn:rule id="_CCD31357-A2D3-482E-A652-A258AC7F35AE">
+          <dmn:inputEntry id="_2B6275AA-687F-4FBB-8FA9-4B73EE4D942A">
+            <dmn:text>-0000000609</dmn:text>
           </dmn:inputEntry>
-          <dmn:outputEntry id="_FB8B68D1-ACD8-4D36-A4B2-6166FD54D32C">
+          <dmn:inputEntry id="_51C69214-70CC-4631-990F-54C050911534">
+            <dmn:text>true</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_B339C0C0-4B72-4ABD-93EC-207CC769DD33">
             <dmn:text>true</dmn:text>
           </dmn:outputEntry>
           <dmn:annotationEntry>
             <dmn:text/>
           </dmn:annotationEntry>
         </dmn:rule>
-        <dmn:rule id="_167C1C35-EE26-4F2A-BF09-F6CF608879BE">
-          <dmn:inputEntry id="_2EEABA22-B504-4B91-A7A4-725898756325">
-            <dmn:text>0080</dmn:text>
+        <dmn:rule id="_411A444C-F4F3-4287-8CA2-2D5E0D8C2980">
+          <dmn:inputEntry id="_2C806CEB-D1E8-494C-AF08-7FCA3762DB5B">
+            <dmn:text>-0000000670</dmn:text>
           </dmn:inputEntry>
-          <dmn:outputEntry id="_6A14C2CF-D9CC-4096-8EA0-0C10628AE286">
+          <dmn:inputEntry id="_A6DD4312-D9C8-47F2-BB8E-90B8468466B8">
+            <dmn:text>true</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_B17C4FC8-0C64-4A33-97C4-7804086FF15D">
             <dmn:text>true</dmn:text>
           </dmn:outputEntry>
           <dmn:annotationEntry>
             <dmn:text/>
           </dmn:annotationEntry>
         </dmn:rule>
-        <dmn:rule id="_78602DC4-BD47-408A-ABEB-3B47E413A56D">
-          <dmn:inputEntry id="_AD016717-971F-46A8-B1F3-4C0DAAA090D3">
-            <dmn:text>0076</dmn:text>
+        <dmn:rule id="_7BF8C1BE-652B-44B8-BCCF-51851BE1176D">
+          <dmn:inputEntry id="_817C2E52-C332-42EB-AC67-F734F1A7868F">
+            <dmn:text>-0000000608</dmn:text>
           </dmn:inputEntry>
-          <dmn:outputEntry id="_E1A9BC27-A676-4D56-9799-55B92EEAD702">
+          <dmn:inputEntry id="_9EDFCCD8-E45C-4B19-AFD2-C512344DF015">
+            <dmn:text>true</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_A9381A13-380E-47E4-B106-B88EB196AE97">
             <dmn:text>true</dmn:text>
           </dmn:outputEntry>
           <dmn:annotationEntry>
             <dmn:text/>
           </dmn:annotationEntry>
         </dmn:rule>
-        <dmn:rule id="_24BB4F08-EA73-4957-96CA-EAEDEA9813BC">
-          <dmn:inputEntry id="_491011E6-DB41-4228-B7CF-A33697C9526B">
-            <dmn:text>0045</dmn:text>
+        <dmn:rule id="_6EEDB1A3-253E-411F-A823-ECEC327DAA74">
+          <dmn:inputEntry id="_A8678ABE-2772-4329-9844-C25313F6576A">
+            <dmn:text>-0000000607</dmn:text>
           </dmn:inputEntry>
-          <dmn:outputEntry id="_3E32DE5C-4D49-4E9B-9D61-93BD1FF2E6B9">
+          <dmn:inputEntry id="_E52464A5-2DE9-4E8D-B6AB-8A30DC5F103E">
+            <dmn:text>true</dmn:text>
+          </dmn:inputEntry>
+          <dmn:outputEntry id="_F23E63EF-52A9-4F42-97B5-9EA7A5F4C4FE">
             <dmn:text>true</dmn:text>
           </dmn:outputEntry>
           <dmn:annotationEntry>
             <dmn:text/>
           </dmn:annotationEntry>
         </dmn:rule>
-        <dmn:rule id="_43D81812-E027-415A-8C96-B9BC304C3D42">
-          <dmn:inputEntry id="_937159C0-6D00-4802-84B1-CE1E26BD1A33">
-            <dmn:text>0032</dmn:text>
+        <dmn:rule id="_BBCF3CDF-4A7D-4EAE-AD74-E51CE372CB20">
+          <dmn:inputEntry id="_A802090B-40BB-4123-AE64-B23A693ED087">
+            <dmn:text>-</dmn:text>
           </dmn:inputEntry>
-          <dmn:outputEntry id="_BF33FB02-A2A6-44B3-BC33-00EDB78A9992">
-            <dmn:text>true</dmn:text>
-          </dmn:outputEntry>
-          <dmn:annotationEntry>
-            <dmn:text/>
-          </dmn:annotationEntry>
-        </dmn:rule>
-        <dmn:rule id="_874C2D9A-A234-490F-8803-54621B83CD89">
-          <dmn:inputEntry id="_E1024F89-AD28-4994-BE36-5C733CB90D2A">
-            <dmn:text>0025</dmn:text>
+          <dmn:inputEntry id="_98DD4F80-FE91-430A-AFBE-7A805A905E84">
+            <dmn:text>otherwise</dmn:text>
           </dmn:inputEntry>
-          <dmn:outputEntry id="_033C805C-5AC3-4F7A-BAE2-6904954A9CC2">
-            <dmn:text>true</dmn:text>
-          </dmn:outputEntry>
-          <dmn:annotationEntry>
-            <dmn:text/>
-          </dmn:annotationEntry>
-        </dmn:rule>
-        <dmn:rule id="_3C722936-5E79-45D7-A86E-087AE7FA89AB">
-          <dmn:inputEntry id="_3648B5B5-55C3-4CC4-8969-3261FBEE237D">
-            <dmn:text>-otherwise</dmn:text>
-          </dmn:inputEntry>
-          <dmn:outputEntry id="_44757603-865E-42AD-AF97-6C196A40BDFD">
+          <dmn:outputEntry id="_725DB403-9B4E-4C6D-A18F-69C6348463B7">
             <dmn:text>false</dmn:text>
           </dmn:outputEntry>
           <dmn:annotationEntry>
@@ -158,43 +239,80 @@
       </dmn:decisionTable>
     </dmn:encapsulatedLogic>
   </dmn:businessKnowledgeModel>
+  <dmn:inputData id="_7DFD85AE-1F64-4C90-910D-17759DD2A53E" name="Rol">
+    <dmn:extensionElements/>
+    <dmn:variable id="_F63C2D6F-12F5-413B-8EF3-78DF8BC7931D" name="Rol" typeRef="rol"/>
+  </dmn:inputData>
+  <dmn:inputData id="_E7D13CEE-CA22-48CB-8285-E3ADEE040BDC" name="Poliza">
+    <dmn:extensionElements/>
+    <dmn:variable id="_A642C110-BBAA-43EA-9A2C-E31E55C90874" name="Poliza" typeRef="poliza"/>
+  </dmn:inputData>
   <dmndi:DMNDI>
     <dmndi:DMNDiagram id="_DCFE08C5-82AF-4F14-AC07-7CCA5D9DE1BF" name="DRG">
       <di:extension>
         <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_EC53161C-30D3-4DA5-9A98-BCB18AADC40F">
+            <kie:width>50</kie:width>
+            <kie:width>120</kie:width>
+            <kie:width>1211</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_20D49E47-568D-4836-AB63-58CBE174B3BC">
+            <kie:width>1211</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_9DAB7451-0213-4FEC-92A5-C42FA554F8C2">
+            <kie:width>1211</kie:width>
+          </kie:ComponentWidths>
+          <kie:ComponentWidths dmnElementRef="_C912CC30-D81F-4229-BDB5-A288721C143A">
+            <kie:width>50</kie:width>
+            <kie:width>104</kie:width>
+            <kie:width>104</kie:width>
+            <kie:width>104</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>104</kie:width>
+            <kie:width>418</kie:width>
+            <kie:width>103</kie:width>
+            <kie:width>104</kie:width>
+          </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_F294A516-793D-4683-818A-71F8DF412A9B">
-            <kie:width>150</kie:width>
+            <kie:width>441</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_EA3BCF08-BB71-4181-91C8-578CCBE86515">
             <kie:width>50</kie:width>
-            <kie:width>150</kie:width>
+            <kie:width>441</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_5F1BE309-7C5B-4993-9EB2-BA60680C8BCF">
-            <kie:width>150</kie:width>
+            <kie:width>50</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
+            <kie:width>100</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_AF6D61B4-2C1E-4C59-B5E5-182833E2E346">
             <kie:width>50</kie:width>
-            <kie:width>150</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_D6113F39-6538-4CE5-B8F4-E72B9E2BD15D">
-            <kie:width>50</kie:width>
-            <kie:width>100</kie:width>
-            <kie:width>100</kie:width>
-            <kie:width>100</kie:width>
-          </kie:ComponentWidths>
-          <kie:ComponentWidths dmnElementRef="_42593F76-3A61-4AE2-8326-C359E8E4209B">
-            <kie:width>50</kie:width>
-            <kie:width>370</kie:width>
+            <kie:width>470</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
+      <dmndi:DMNShape id="dmnshape-drg-_1F446D63-8794-4A18-9D36-537536D3F8C8" dmnElementRef="_1F446D63-8794-4A18-9D36-537536D3F8C8" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="882" y="94" width="200" height="200"/>
+        <dmndi:DMNLabel/>
+        <dmndi:DMNDecisionServiceDividerLine>
+          <di:waypoint x="882" y="194"/>
+          <di:waypoint x="1082" y="194"/>
+        </dmndi:DMNDecisionServiceDividerLine>
+      </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-drg-_59545B85-F2CF-4EE0-BC34-5DE38BB142A3" dmnElementRef="_59545B85-F2CF-4EE0-BC34-5DE38BB142A3" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1017.0000000000001" y="557" width="117" height="70"/>
+        <dc:Bounds x="923.0000000000001" y="480" width="117" height="70"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-drg-_DF7D399C-D6CE-4DD5-962E-E873510F3DEA" dmnElementRef="_DF7D399C-D6CE-4DD5-962E-E873510F3DEA" isCollapsed="false">
@@ -203,7 +321,7 @@
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1036" y="160" width="100" height="50"/>
+        <dc:Bounds x="932" y="140" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
       <dmndi:DMNShape id="dmnshape-drg-_3A38A0CE-5A98-49CE-A96D-8F6CF79EDBD1" dmnElementRef="_3A38A0CE-5A98-49CE-A96D-8F6CF79EDBD1" isCollapsed="false">
@@ -224,30 +342,43 @@
         <dc:Bounds x="1366" y="421" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNShape id="dmnshape-drg-_5B509C1E-358D-41F7-B472-5C4F07E6A669" dmnElementRef="_5B509C1E-358D-41F7-B472-5C4F07E6A669" isCollapsed="false">
+      <dmndi:DMNShape id="dmnshape-drg-_7DFD85AE-1F64-4C90-910D-17759DD2A53E" dmnElementRef="_7DFD85AE-1F64-4C90-910D-17759DD2A53E" isCollapsed="false">
         <dmndi:DMNStyle>
           <dmndi:FillColor red="255" green="255" blue="255"/>
           <dmndi:StrokeColor red="0" green="0" blue="0"/>
           <dmndi:FontColor red="0" green="0" blue="0"/>
         </dmndi:DMNStyle>
-        <dc:Bounds x="1349" y="261.6842105263158" width="100" height="50"/>
+        <dc:Bounds x="753" y="481" width="100" height="50"/>
         <dmndi:DMNLabel/>
       </dmndi:DMNShape>
-      <dmndi:DMNEdge id="dmnedge-drg-_CC361D24-E23B-44F0-AD3B-CCF04B002FF5" dmnElementRef="_CC361D24-E23B-44F0-AD3B-CCF04B002FF5">
-        <di:waypoint x="1399" y="286.6842105263158"/>
-        <di:waypoint x="1136" y="185"/>
-      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="dmnshape-drg-_E7D13CEE-CA22-48CB-8285-E3ADEE040BDC" dmnElementRef="_E7D13CEE-CA22-48CB-8285-E3ADEE040BDC" isCollapsed="false">
+        <dmndi:DMNStyle>
+          <dmndi:FillColor red="255" green="255" blue="255"/>
+          <dmndi:StrokeColor red="0" green="0" blue="0"/>
+          <dmndi:FontColor red="0" green="0" blue="0"/>
+        </dmndi:DMNStyle>
+        <dc:Bounds x="1138" y="485" width="100" height="50"/>
+        <dmndi:DMNLabel/>
+      </dmndi:DMNShape>
       <dmndi:DMNEdge id="dmnedge-drg-_04634A90-5624-47DA-9D7B-63A6C7D8699E-AUTO-TARGET" dmnElementRef="_04634A90-5624-47DA-9D7B-63A6C7D8699E">
-        <di:waypoint x="1075.5" y="592"/>
-        <di:waypoint x="1086" y="210"/>
+        <di:waypoint x="981.5" y="515"/>
+        <di:waypoint x="982" y="190"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_299C6F41-CE8C-4D51-B195-1627A6B73F53-AUTO-TARGET" dmnElementRef="_299C6F41-CE8C-4D51-B195-1627A6B73F53">
+        <di:waypoint x="803" y="506"/>
+        <di:waypoint x="982" y="190"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_5E9B2014-8B22-4654-84C4-98EAF37FB212-AUTO-TARGET" dmnElementRef="_5E9B2014-8B22-4654-84C4-98EAF37FB212">
+        <di:waypoint x="1188" y="510"/>
+        <di:waypoint x="982" y="190"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_3C7900E7-DF1D-41BC-A70A-74140FA40560" dmnElementRef="_3C7900E7-DF1D-41BC-A70A-74140FA40560">
         <di:waypoint x="708" y="356"/>
-        <di:waypoint x="1036" y="185"/>
+        <di:waypoint x="932" y="165"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_A00DE6DE-55CB-4435-A4C5-A7FC9CB62EB3" dmnElementRef="_A00DE6DE-55CB-4435-A4C5-A7FC9CB62EB3">
         <di:waypoint x="1416" y="446"/>
-        <di:waypoint x="1136" y="185"/>
+        <di:waypoint x="1032" y="165"/>
       </dmndi:DMNEdge>
     </dmndi:DMNDiagram>
   </dmndi:DMNDI>
