@@ -123,7 +123,7 @@
       <dmn:contextEntry>
         <dmn:decisionTable id="_C912CC30-D81F-4229-BDB5-A288721C143A" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
           <dmn:input id="_B8B62F9E-D3C7-42C5-91FB-3B6279B10FED">
-            <dmn:inputExpression typeRef="string">
+            <dmn:inputExpression id="_2B6075BE-1386-4F7B-BC83-9FADCB675C55" typeRef="string">
               <dmn:text>Producto</dmn:text>
             </dmn:inputExpression>
           </dmn:input>
@@ -550,7 +550,7 @@ validacion.rol para excepcion=  "Aprueba CUO"</dmn:text>
       <dmn:contextEntry>
         <dmn:decisionTable id="_F027C721-DE0E-4941-9568-54F598A8C3F5" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
           <dmn:input id="_82D97B40-2F03-4260-AFE2-894CA8EFCB63">
-            <dmn:inputExpression typeRef="string">
+            <dmn:inputExpression id="_ABDEA875-8662-4FDF-B763-8A7A4E19B2DE" typeRef="string">
               <dmn:text>Producto</dmn:text>
             </dmn:inputExpression>
           </dmn:input>
@@ -580,7 +580,7 @@ validacion.rol para excepcion=  "Aprueba CUO"</dmn:text>
             </dmn:inputExpression>
           </dmn:input>
           <dmn:input id="_C53C942A-2A83-4DB5-A324-A9C516C8B258">
-            <dmn:inputExpression typeRef="number">
+            <dmn:inputExpression id="_B01F944A-4C65-4BBC-BE44-AAB8CC07800C" typeRef="number">
               <dmn:text>CTE+CDO+PB</dmn:text>
             </dmn:inputExpression>
           </dmn:input>
@@ -767,12 +767,12 @@ validacion.rol para excepcion=  "Aprueba CUO"</dmn:text>
       <dmn:contextEntry>
         <dmn:decisionTable id="_BD46D5EB-2D37-4FCC-8549-3807E734E902" hitPolicy="UNIQUE" preferredOrientation="Rule-as-Row">
           <dmn:input id="_DB32A04B-D79B-44AC-A6EE-C944699BCEF2">
-            <dmn:inputExpression typeRef="boolean">
+            <dmn:inputExpression id="_D5DA5BD1-6205-4651-BE4B-ABE13D8143AB" typeRef="boolean">
               <dmn:text>Cambios en Riesgo</dmn:text>
             </dmn:inputExpression>
           </dmn:input>
           <dmn:input id="_E8FFAB07-1DD8-4B95-8AB3-A638A1EA8E87">
-            <dmn:inputExpression typeRef="string">
+            <dmn:inputExpression id="_2E645987-1FB0-4D1A-A11A-193E81247A3C" typeRef="string">
               <dmn:text>Producto</dmn:text>
             </dmn:inputExpression>
           </dmn:input>
@@ -802,7 +802,7 @@ validacion.rol para excepcion=  "Aprueba CUO"</dmn:text>
             </dmn:inputExpression>
           </dmn:input>
           <dmn:input id="_025B6237-7A71-4A9E-93D5-0ABA4639D665">
-            <dmn:inputExpression typeRef="number">
+            <dmn:inputExpression id="_0F07BA2C-EBA8-4D5F-986F-E3AE86651F16" typeRef="number">
               <dmn:text>CTE+CDO+PB</dmn:text>
             </dmn:inputExpression>
           </dmn:input>
@@ -986,7 +986,7 @@ return false</dmn:text>
   </dmn:inputData>
   <dmn:decision id="_31580998-130A-45C3-9FB0-E0EC2511D91D" name="Resultado Validacion">
     <dmn:extensionElements/>
-    <dmn:variable id="_C654231E-216D-4695-99F3-955FC0AA296A" name="Resultado Validacion" typeRef="Validación"/>
+    <dmn:variable id="_C654231E-216D-4695-99F3-955FC0AA296A" name="Resultado Validacion" typeRef="resultadoValidacion"/>
     <dmn:informationRequirement id="_CDDD7BE3-C4BA-4EC7-9A02-ACBD2530347A">
       <dmn:requiredDecision href="#_DE8BA6B9-F5FA-422F-9B6C-F0F711AEC667"/>
     </dmn:informationRequirement>
@@ -1006,7 +1006,18 @@ return false</dmn:text>
       <dmn:requiredDecision href="#_73A8C2BD-5DD0-46B0-932D-5939B02ADDF6"/>
     </dmn:informationRequirement>
     <dmn:literalExpression id="_FB83E6CB-2331-49C6-AF05-03ADCA2AC592">
-      <dmn:text/>
+      <dmn:text>if GdC Comercios Nivel Poliza is not null then
+resultadoValidacion.add(GdC Comercios Nivel Poliza);
+if GdC Comercios Nivel Riesgo is not null then
+resultadoValidacion.add(GdC Comercios Nivel Riesgo);
+if GdC Comercios-garantia Daños Caso 3 is not null then
+resultadoValidacion.add(GdC Comercios-garantia Daños Caso 3) ;
+if GdC Comercios-garantia Daños Caso 4 is not null then
+resultadoValidacion.add(GdC Comercios-garantia Daños Caso 4); 
+if GdC PYMES Caso 5 is not null then
+resultadoValidacion.add(GdC PYMES Caso 5);
+if GdC PYMES Caso 6 is not null then
+resultadoValidacion.add(GdC PYMES Caso 6);</dmn:text>
     </dmn:literalExpression>
   </dmn:decision>
   <dmndi:DMNDI>
@@ -1163,7 +1174,7 @@ return false</dmn:text>
             <kie:width>491</kie:width>
           </kie:ComponentWidths>
           <kie:ComponentWidths dmnElementRef="_FB83E6CB-2331-49C6-AF05-03ADCA2AC592">
-            <kie:width>190</kie:width>
+            <kie:width>657</kie:width>
           </kie:ComponentWidths>
         </kie:ComponentsWidthsExtension>
       </di:extension>
@@ -1363,6 +1374,10 @@ return false</dmn:text>
         <di:waypoint x="846" y="785"/>
         <di:waypoint x="895.5" y="394"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_CE2E0602-19CE-404F-98DF-F76E4B088644-AUTO-TARGET" dmnElementRef="_CE2E0602-19CE-404F-98DF-F76E4B088644">
+        <di:waypoint x="627.5981308411215" y="775.3421052631579"/>
+        <di:waypoint x="895.5" y="394"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_A00DE6DE-55CB-4435-A4C5-A7FC9CB62EB3" dmnElementRef="_A00DE6DE-55CB-4435-A4C5-A7FC9CB62EB3">
         <di:waypoint x="1138" y="370"/>
         <di:waypoint x="957" y="362"/>
@@ -1370,10 +1385,6 @@ return false</dmn:text>
       <dmndi:DMNEdge id="dmnedge-drg-_3C7900E7-DF1D-41BC-A70A-74140FA40560" dmnElementRef="_3C7900E7-DF1D-41BC-A70A-74140FA40560">
         <di:waypoint x="1111" y="455.6842105263158"/>
         <di:waypoint x="957" y="362"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-drg-_CE2E0602-19CE-404F-98DF-F76E4B088644-AUTO-TARGET" dmnElementRef="_CE2E0602-19CE-404F-98DF-F76E4B088644">
-        <di:waypoint x="627.5981308411215" y="775.3421052631579"/>
-        <di:waypoint x="895.5" y="394"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_86396F3C-4B90-446D-8CF6-1A20938C8A22-AUTO-TARGET" dmnElementRef="_86396F3C-4B90-446D-8CF6-1A20938C8A22">
         <di:waypoint x="1008.2990654205607" y="785"/>
@@ -1387,6 +1398,10 @@ return false</dmn:text>
         <di:waypoint x="442" y="775"/>
         <di:waypoint x="461" y="346"/>
       </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_D351A99A-CDC8-46BE-BEDE-C7DCBF79C479" dmnElementRef="_D351A99A-CDC8-46BE-BEDE-C7DCBF79C479">
+        <di:waypoint x="627.5981308411215" y="775.3421052631579"/>
+        <di:waypoint x="461" y="346"/>
+      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_3C0DFC74-6D22-4791-B691-4FE91832BC8D" dmnElementRef="_3C0DFC74-6D22-4791-B691-4FE91832BC8D">
         <di:waypoint x="277" y="553"/>
         <di:waypoint x="411" y="346"/>
@@ -1394,10 +1409,6 @@ return false</dmn:text>
       <dmndi:DMNEdge id="dmnedge-drg-_12B6684D-4EDB-4C60-A01A-6BACA6FF8D81" dmnElementRef="_12B6684D-4EDB-4C60-A01A-6BACA6FF8D81">
         <di:waypoint x="314" y="650"/>
         <di:waypoint x="411" y="346"/>
-      </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-drg-_D351A99A-CDC8-46BE-BEDE-C7DCBF79C479" dmnElementRef="_D351A99A-CDC8-46BE-BEDE-C7DCBF79C479">
-        <di:waypoint x="627.5981308411215" y="775.3421052631579"/>
-        <di:waypoint x="461" y="346"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_7A434FCC-5561-40D5-842E-8711BA77C0C1-AUTO-TARGET" dmnElementRef="_7A434FCC-5561-40D5-842E-8711BA77C0C1">
         <di:waypoint x="1158.5" y="785.078947368421"/>
@@ -1419,24 +1430,24 @@ return false</dmn:text>
         <di:waypoint x="1008.2990654205607" y="785"/>
         <di:waypoint x="1336" y="371"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-drg-_18BB25CF-9603-4ACC-8310-05A32E81EFFC" dmnElementRef="_18BB25CF-9603-4ACC-8310-05A32E81EFFC">
-        <di:waypoint x="1533" y="513.3421052631579"/>
-        <di:waypoint x="1336" y="371"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_10E320D2-02AE-43F7-AB40-E717EC7D6014-AUTO-TARGET" dmnElementRef="_10E320D2-02AE-43F7-AB40-E717EC7D6014">
         <di:waypoint x="627.5981308411215" y="775.3421052631579"/>
         <di:waypoint x="1336" y="402"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_18BB25CF-9603-4ACC-8310-05A32E81EFFC" dmnElementRef="_18BB25CF-9603-4ACC-8310-05A32E81EFFC">
+        <di:waypoint x="1533" y="513.3421052631579"/>
+        <di:waypoint x="1336" y="371"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_3B8CD193-45A9-48AD-9F34-DD3045680240" dmnElementRef="_3B8CD193-45A9-48AD-9F34-DD3045680240">
         <di:waypoint x="1158.5" y="785.078947368421"/>
         <di:waypoint x="1571" y="378"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-drg-_447BC296-4775-4814-B39C-66526A9F109C" dmnElementRef="_447BC296-4775-4814-B39C-66526A9F109C">
-        <di:waypoint x="1533" y="513.3421052631579"/>
-        <di:waypoint x="1571" y="378"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_AE7A54A4-A101-4E0E-BD88-FC34104A083E" dmnElementRef="_AE7A54A4-A101-4E0E-BD88-FC34104A083E">
         <di:waypoint x="627.5981308411215" y="775.3421052631579"/>
+        <di:waypoint x="1571" y="378"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_447BC296-4775-4814-B39C-66526A9F109C" dmnElementRef="_447BC296-4775-4814-B39C-66526A9F109C">
+        <di:waypoint x="1533" y="513.3421052631579"/>
         <di:waypoint x="1571" y="378"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_1E0B4B67-2833-4C11-A779-3DE55B0F69B7-AUTO-TARGET" dmnElementRef="_1E0B4B67-2833-4C11-A779-3DE55B0F69B7">
@@ -1447,13 +1458,13 @@ return false</dmn:text>
         <di:waypoint x="1158.5" y="785.078947368421"/>
         <di:waypoint x="1740" y="371"/>
       </dmndi:DMNEdge>
-      <dmndi:DMNEdge id="dmnedge-drg-_4852B93A-C6DA-44D2-A552-1397CB62D6F8" dmnElementRef="_4852B93A-C6DA-44D2-A552-1397CB62D6F8">
-        <di:waypoint x="1863" y="745"/>
-        <di:waypoint x="1740" y="371"/>
-      </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_0B13CBD0-084E-4773-9D76-BE2B75E469AE" dmnElementRef="_0B13CBD0-084E-4773-9D76-BE2B75E469AE">
         <di:waypoint x="1372.5" y="785.078947368421"/>
         <di:waypoint x="1740" y="396"/>
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="dmnedge-drg-_4852B93A-C6DA-44D2-A552-1397CB62D6F8" dmnElementRef="_4852B93A-C6DA-44D2-A552-1397CB62D6F8">
+        <di:waypoint x="1863" y="745"/>
+        <di:waypoint x="1740" y="371"/>
       </dmndi:DMNEdge>
       <dmndi:DMNEdge id="dmnedge-drg-_CDDD7BE3-C4BA-4EC7-9A02-ACBD2530347A" dmnElementRef="_CDDD7BE3-C4BA-4EC7-9A02-ACBD2530347A">
         <di:waypoint x="461" y="346"/>
